@@ -1,0 +1,277 @@
+package com.example.user.menuluhesapmak;
+
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText sayi1,sayi2;
+    TextView sonuc;
+
+    int s1,s2,sonucu;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        sayi1 = findViewById(R.id.sayi1);
+        sayi2 = findViewById(R.id.sayi2);
+        sonuc = findViewById(R.id.sonuc);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        s1 = Integer.parseInt(sayi1.getText().toString());
+        s2 = Integer.parseInt(sayi2.getText().toString());
+
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.topla) {
+
+            sonucu = s1+s2;
+
+            sonuc.setText(""+sonucu);
+            return true;
+        }
+       else  if (id == R.id.cikar) {
+            sonucu = s1-s2;
+
+            sonuc.setText(""+sonucu);
+            return true;
+        }
+       else if (id == R.id.carp) {
+            sonucu = s1*s2;
+
+            sonuc.setText(""+sonucu);
+            return true;
+        }
+       else if (id == R.id.bol) {
+            sonucu = s1/s2;
+
+            sonuc.setText(""+sonucu);
+            return true;
+        }
+        else if (id == R.id.cikis) {
+            sayi1.setText(null);
+            sayi2.setText(null);
+            sonuc.setText(null);
+            return true;
+        }
+
+
+
+
+        return super.onOptionsItemSelected(item);
+    }
+}
+
+CONTENT.
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/sayi1"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="20dp"
+            android:hint="Birinci Sayi"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/sayi2"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="20dp"
+            android:hint="İkinci Sayi"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/sonuc"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>
+
+BURADA RENK DEĞİŞTİRDİK
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#ffe4e1</item>
+        <item name="colorPrimaryDark">#e0eeee</item>
+        <item name="colorAccent">#e6e6fa</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+</resources>
+
+MENU.
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.user.menuluhesapmak.MainActivity">
+
+
+    <item
+        android:id="@+id/topla"
+        android:orderInCategory="100"
+        android:title="Toplama"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_add_black_24dp"
+        />
+
+    <item
+        android:id="@+id/cikar"
+        android:orderInCategory="100"
+        android:title="Çıkarma"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_remove_black_24dp"
+        />
+
+    <item
+        android:id="@+id/carp"
+        android:orderInCategory="100"
+        android:title="Çarpma"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_clear_black_24dp"
+        />
+
+    <item
+        android:id="@+id/bol"
+        android:orderInCategory="100"
+        android:title="Bölme"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_done_black_24dp"
+        />
+    <item
+        android:id="@+id/cikis"
+        android:orderInCategory="100"
+        android:title="Çıkış"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_exit_to_app_black_24dp"
+        />
+
+</menu>
+
+MANİFEST
+
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.user.menuluhesapmak">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/calculator"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/calculator"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
+ACTV 
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_main" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@drawable/ic_exit_to_app_black_24dp" />
+
+</android.support.design.widget.CoordinatorLayout>
+Ek alanı
