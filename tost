@@ -1,0 +1,97 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btnToast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:onClick="basitToast"
+            android:padding="15dp"
+            android:text="Button Toast" />
+
+        <Button
+            android:id="@+id/btnResimli"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:onClick="resimliToast"
+            android:padding="15dp"
+            android:text="Button Resimli" />
+
+        <Button
+            android:id="@+id/btnYazi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:onClick="yaziToast"
+            android:padding="15dp"
+            android:text="Button Yazı" />
+
+    </LinearLayout>
+
+</RelativeLayout>
+
+<resources>
+    <string name="app_name">ToastOrnek</string>
+    //open editor, ülke ve değişken eklenip telefon dili neyse ona göre 
+</resources>
+
+
+package com.example.user.toastornek;
+
+import android.graphics.Color;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+    }
+
+    public void basitToast(View view) {
+        Toast.makeText(this,"Basit toast basıldı.",Toast.LENGTH_LONG).show();
+    }
+
+    public void resimliToast(View view) {
+        //resim isimleri küçükhart ile başlamalı, rakam ve türkçe karakter olmamalı
+        ImageView img = new ImageView(MainActivity.this); //nesne bu class da kullanılacak
+        img.setImageResource(R.drawable.resim); //resmin kaynağı
+        Toast toastResim = new Toast(getApplicationContext());
+        toastResim.setView(img);
+        toastResim.setDuration(Toast.LENGTH_LONG);
+        toastResim.show();
+    }
+
+    public void yaziToast(View view) {
+        TextView metin = new TextView(MainActivity.this);
+        metin.setText("OKAN ÜNİVERİSTESİ UYGULAMALI BİLİMLER FAKÜLTESİ YÖNETİM BİLİŞİM SİSTEMLERİ");
+        metin.setTextColor(Color.BLUE);
+        metin.setTextSize(30);
+        Toast toastMetin = new Toast(getApplicationContext());
+        toastMetin.setView(metin);
+        toastMetin.setDuration(Toast.LENGTH_LONG);
+        toastMetin.show();
+    }
+}
