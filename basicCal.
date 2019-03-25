@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/ilk"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <EditText
+            android:id="@+id/sayi1"
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="30dp"/>
+
+        <EditText
+            android:id="@+id/sayi2"
+            android:layout_marginTop="20dp"
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="30dp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_below="@id/ilk"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <Button
+            android:id="@+id/cikarBtn"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="25dp"
+            android:onClick="Cikarma"
+            android:text="-"
+            tools:ignore="OnClick" />
+
+        <Button
+            android:id="@+id/toplaBtn"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:onClick="topla"
+            android:text="+"/>
+
+        <Button
+            android:id="@+id/carpBtn"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:onClick="carp"
+            android:text="*" />
+
+        <Button
+            android:id="@+id/bolBtn"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:onClick="bol"
+            android:text="/" />
+
+        <Button
+            android:id="@+id/silBtn"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:onClick="sil"
+            android:text="C" />
+
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tvSonuc"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="140dp"
+        android:text="Sonuç: "
+        android:layout_width="100dp"
+        android:layout_height="80dp" />
+
+</RelativeLayout>
+
+---------------
+package com.example.user.hafta1;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText etSayi1,etSayi2;
+    Button topla,cikar,carp,bol,sil;
+    TextView sonucTw;
+
+    int s1,s2,sonuc;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        etSayi1 = findViewById(R.id.sayi1);
+        etSayi2 = findViewById(R.id.sayi2);
+
+        sonucTw = findViewById(R.id.tvSonuc);
+
+    }
+
+    public void carp(View view) {
+        s1 = Integer.parseInt(etSayi1.getText().toString());
+        s2 = Integer.parseInt(etSayi2.getText().toString());
+
+        sonuc= s1*s2;
+        sonucTw.setText(s1+" * "+" = "+sonuc);
+    }
+
+    public void Cikarma(View view) {
+
+        s1 = Integer.parseInt(etSayi1.getText().toString());
+        s2 = Integer.parseInt(etSayi2.getText().toString());
+
+        sonuc= s1-s2;
+        sonucTw.setText(s1+" - " +"=" +sonuc);
+    }
+
+    public void bol(View view) {
+
+        s1 = Integer.parseInt(etSayi1.getText().toString());
+        s2 = Integer.parseInt(etSayi2.getText().toString());
+
+        sonuc= s1/s2;
+        sonucTw.setText(s1+" / "+" = "+sonuc);
+    }
+
+    public void sil(View view) {
+
+        s1 = Integer.parseInt(etSayi1.getText().toString());
+        s2 = Integer.parseInt(etSayi2.getText().toString());
+
+        etSayi1.setText(null);
+        etSayi2.setText(null);
+        sonucTw.setText(null);
+    }
+
+    public void topla(View view) {
+
+        s1 = Integer.parseInt(etSayi1.getText().toString());
+        s2 = Integer.parseInt(etSayi2.getText().toString());
+
+        sonuc= s1+s2;
+        sonucTw.setText(s1+" + "+" = "+sonuc);
+    }
+}
