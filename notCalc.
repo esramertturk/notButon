@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/ETisim"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="110dp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/ETvizeNotu"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="110dp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/ETfinalNotu"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="110dp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/hesaplaButon"
+            android:text="HESAPLA"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="85dp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</RelativeLayout>
+package com.example.user.veriaktarimivizefinal;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText etIsim, etVize, etFinal;
+    Button hesapla;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        etIsim = findViewById(R.id.ETisim);
+        etVize = findViewById(R.id.ETvizeNotu);
+        etFinal = findViewById(R.id.ETfinalNotu);
+        hesapla = findViewById(R.id.hesaplaButon);
+
+        hesapla.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                byte v = Byte.parseByte(etVize.getText().toString());
+                byte f = Byte.parseByte(etFinal.getText().toString());
+                byte bn = (byte) ((v+f)/2);
+                String isim = etIsim.getText().toString();
+
+                Intent gonder = new Intent(MainActivity.this,Main2Activity.class);
+                gonder.putExtra("isim",isim);
+                gonder.putExtra("basari",bn);
+                startActivity(gonder);
+            }
+        });
+
+    }
+}
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Main2Activity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/isimTv"
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/sonucTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+</RelativeLayout>package com.example.user.veriaktarimivizefinal;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.TextView;
+
+public class Main2Activity extends AppCompatActivity {
+
+    TextView tvAd,tvSonuc;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main2);
+
+        tvAd = findViewById(R.id.isimTv);
+        tvSonuc = findViewById(R.id.sonucTV);
+
+
+        String isim = getIntent().getExtras().getString("isim","");
+        tvAd.setText(isim);
+
+        Byte sonuc = getIntent().getExtras().getByte("basari",(byte) 0);
+        tvSonuc.setText(String.valueOf(sonuc));
+    }
+}
