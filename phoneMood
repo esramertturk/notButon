@@ -1,0 +1,57 @@
+Audiomanager sınıfının kullanıyoruz
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/sesliButon"
+        android:text="sesli"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/sessizButon"
+        android:text="SESSİZ"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/titresimButon"
+        android:text="TİTREŞİM"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>
+---------
+Button kaydetButon,sesliButon,sessizButon,titresimButon;
+AudioManager audioManager;
+/* telefon modunu değiştirir.*/
+sesliButon = findViewById(R.id.sesliButon);
+sessizButon = findViewById(R.id.sessizButon);
+titresimButon = findViewById(R.id.titresimButon);
+audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+sesliButon.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        audioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+    }
+});
+
+sessizButon.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        audioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+    }
+});
+
+titresimButon.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        audioManager.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
+    }
+});
