@@ -1,0 +1,200 @@
+uygulama da titreşime izin verme: android manifest : <uses-permission android:name="android.permission.VIBRATE"></uses-permission>
+-------------------------------------------------------------
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/ekran"
+    tools:context=".MainActivity">
+
+   <LinearLayout
+       android:orientation="vertical"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+       <RadioGroup
+           android:id="@+id/radioGrup"
+           android:layout_width="match_parent"
+           android:layout_height="100dp"
+           android:orientation="horizontal">
+
+           <RadioButton
+               android:id="@+id/rd1"
+               android:layout_width="100dp"
+               android:layout_height="50dp"
+               android:layout_margin="25dp"
+
+               android:text="Kırmızı" />
+
+           <RadioButton
+               android:id="@+id/rd2"
+               android:layout_width="60dp"
+               android:layout_height="50dp"
+               android:layout_margin="25dp"
+
+               android:text="Sarı" />
+
+           <RadioButton
+               android:id="@+id/rd3"
+               android:layout_width="70dp"
+               android:layout_height="50dp"
+               android:layout_margin="25dp"
+
+               android:text="Mavi" />
+       </RadioGroup>
+
+      <LinearLayout
+           android:orientation="horizontal"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+
+           <ToggleButton
+               android:id="@+id/toggleButon"
+               android:textOn="Açık"
+               android:textOff="Kapalı"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content" />
+           <TextView
+               android:id="@+id/toggleText"
+               android:layout_marginLeft="10dp"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content" />
+
+
+       </LinearLayout>
+
+       <LinearLayout
+           android:orientation="vertical"
+           android:layout_width="match_parent"
+           android:layout_height="120dp">
+
+           <TextView
+               android:id="@+id/sozlesme"
+               android:text="SFBGJKSFGKŞBNSFGHNŞKLFNLBKNBLB"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content" />
+
+           <CheckBox
+               android:id="@+id/onayCheckBox"
+               android:text="Sözleşmeyi okudum. Kabul ediyorum."
+               android:checked="false"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content" />
+           <Button
+               android:id="@+id/kaydetButon"
+               android:text="KAYDET"
+               android:visibility="invisible"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content" />
+       </LinearLayout>
+
+   </LinearLayout>
+</RelativeLayout>
+
+package com.example.user.secenek;
+
+import android.content.Context;
+import android.graphics.Color;
+import android.os.Vibrator;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ToggleButton;
+
+
+public class MainActivity extends AppCompatActivity {
+
+    RelativeLayout ekran;
+    RadioGroup radioGroup; // tüm rbutonları kontrole almak için
+    RadioButton rd1,rd2,rd3;
+    ToggleButton toggleButon;
+    TextView toggleText;
+    Vibrator titresim;
+    CheckBox onayCBox;
+    Button kaydetButon;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        ekran = findViewById(R.id.ekran);
+        radioGroup = findViewById(R.id.radioGrup);
+        rd1 = findViewById(R.id.rd1);
+        rd2 = findViewById(R.id.rd2);
+        rd3 = findViewById(R.id.rd3);
+        toggleButon = findViewById(R.id.toggleButon);
+        toggleText = findViewById(R.id.toggleText);
+        titresim = (Vibrator)this.getSystemService(Context.VIBRATOR_SERVICE); //titreşim nesnesini tanımlıyoruz.
+
+        onayCBox = findViewById(R.id.onayCheckBox);
+        kaydetButon = findViewById(R.id.kaydetButon);
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if (rd1.isChecked()) {
+                    ekran.setBackgroundColor(Color.RED);
+                } else if (rd2.isChecked()) {
+                    ekran.setBackgroundColor(Color.YELLOW);
+                } else if (rd3.isChecked()) {
+                    ekran.setBackgroundColor(Color.BLUE);
+                }
+            }
+        });
+
+        toggleButon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean on = ((ToggleButton)view).isChecked(); // toggle butona basıldığında değerini  al. true or false
+                if(on)
+                {
+                  toggleText.setText("Açık");
+                  titresim.vibrate(10000); //10.000 = 10sn
+                }
+                else
+                {
+                    toggleText.setText("Kapalı");
+                    titresim.cancel();
+                }
+            }
+        });
+
+        onayCBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean durum = onayCBox.isChecked();
+                if(durum == true)
+                {
+                    //kaydetButon.setEnabled(true); //enable: tıklanma özelliği olmaz gözükür
+                    kaydetButon.setVisibility(View.VISIBLE); // visibility: hiç görğnmez visible yapınca görünür
+                }
+                else
+                {
+                    kaydetButon.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+
+        kaydetButon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "Kaydedildi", Toast.LENGTH_LONG).show();
+                kaydetButon.setVisibility(View.INVISIBLE);
+                onayCBox.setChecked(false);
+            }
+        });
+
+
+
+    }
+}
