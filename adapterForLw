@@ -1,0 +1,72 @@
+bu sayfaya geliş - drawable - new - xml - layout xml file  // küçük 
+harflerle tanım tip olarakda text view seçilir aşağıdaki kodlar eklenir.
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:textColor="#0000ee"
+    android:background="#ffe4e1"
+    android:textSize="20sp"
+    android:textStyle="italic|bold"
+    android:padding="5dp"
+    >
+
+</TextView>
+package com.example.user.hafta2;
+
+import android.graphics.Color;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
+
+
+public class MainActivity extends AppCompatActivity {
+
+    //String renkler [] = {"Kırmızı","Sarı","Yeşil","Mavi","Pembe"}; -- string.xmlden alacak renkleri
+
+    String renk[];
+    ListView renklerLV;
+    TextView renklerTV;
+    LinearLayout ekran;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        renklerLV = findViewById(R.id.renkListView);
+        renklerTV = findViewById(R.id.sonucTextView);
+        ekran = findViewById(R.id.ekranLayout);
+        renk = getResources().getStringArray(R.array.renkler);
+
+        /* ADAPTER KULLANARAK LİSTVİEW OLUŞTURMA*/
+        ArrayAdapter <String> adater = new ArrayAdapter<>(this, R.layout.liste_goruntu,renk);
+        //dizi adapter oluşturyoruz string tipinde, şekli androidde tanımlı olan (simplelist) kendimiz yaptığımızda android sil.
+
+        //birden fazla seçenek olduğı için set on item click listener
+
+        renklerLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                //renklerTV.setText(""+i);
+               // renklerTV.setText(String.valueOf(i));
+                renklerTV.setText(renk[i]);
+
+                switch (i) {
+                    case 0: ekran.setBackgroundColor(Color.RED);  break;
+                    case 1: ekran.setBackgroundColor(Color.YELLOW);  break;
+                    case 2: ekran.setBackgroundColor(Color.GREEN);  break;
+                    case 3: ekran.setBackgroundColor(Color.BLUE); break;
+                    case 4: ekran.setBackgroundColor(Color.GRAY); break;
+                    case 5: ekran.setBackgroundColor(Color.BLACK); break;
+                }
+            }
+        });
+
+    }
+    }
