@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+           <EditText
+               android:id="@+id/etAd"
+               android:layout_width="75dp"
+               android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/etSoyad"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content" />
+
+            <RadioGroup
+                android:id="@+id/radioGrupCinsiyet"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:layout_marginLeft="50dp"
+                    android:id="@+id/rdKadin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+
+                    android:text="Kadın" />
+
+                <RadioButton
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/rdErkek"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+
+                    android:text="Erkek" />
+
+            </RadioGroup>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="80dp">
+
+           <LinearLayout
+               android:id="@+id/soru1Layout"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
+
+               <TextView
+                   android:id="@+id/soru1"
+                   android:layout_marginTop="15dp"
+                   android:text="1.Soru :   15 + 20 = ?"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content" />
+               <RadioGroup
+                   android:id="@+id/soru1Grup"
+                   android:orientation="horizontal"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content">
+
+                   <RadioButton
+                       android:id="@+id/rdsoru1Cevap1"
+                       android:layout_marginLeft="50dp"
+                       android:layout_width="wrap_content"
+                       android:layout_height="50dp"
+                       android:text="35" />
+
+                   <RadioButton
+                       android:id="@+id/rdsoru1Cevap2"
+                       android:layout_marginLeft="10dp"
+                       android:layout_width="wrap_content"
+                       android:text="45"
+                       android:layout_height="50dp"/>
+
+               </RadioGroup>
+
+
+           </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="80dp">
+
+            <LinearLayout
+                android:id="@+id/soru2Layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/soru2"
+                    android:layout_marginTop="15dp"
+                    android:text="2.Soru :   Türkiye'nin başkenti = ?"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <RadioGroup
+                    android:id="@+id/soru2Grup"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/rdsoru2Cevap1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:text="İstanbul" />
+
+                    <RadioButton
+                        android:id="@+id/rdsoru2Cevap2"
+                        android:layout_width="wrap_content"
+                        android:text="Ankara"
+                        android:layout_height="50dp"/>
+
+                </RadioGroup>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="80dp">
+
+            <LinearLayout
+                android:id="@+id/soru3Layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/soru3"
+                    android:layout_marginTop="15dp"
+                    android:text="3.Soru :   Dünyada kaç kıta vardır?"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <RadioGroup
+                    android:id="@+id/soru3Grup"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/rdsoru3Cevap1"
+                        android:layout_marginLeft="50dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:text="7" />
+
+                    <RadioButton
+                        android:id="@+id/rdsoru3Cevap2"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:text="5"
+                        android:layout_height="50dp"/>
+
+                </RadioGroup>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Bildiğiniz programlama dilleri"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+               </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="80dp">
+
+            <CheckBox
+                android:id="@+id/chb1"
+                android:text="Java"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <CheckBox
+                android:id="@+id/chb2"
+                android:text="Kotlin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <CheckBox
+                android:id="@+id/chb3"
+                android:text="C#"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <CheckBox
+                android:id="@+id/chb4"
+                android:text="C++"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <CheckBox
+                android:id="@+id/chb5"
+                android:text="C"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/sonuc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/gosterButon"
+            android:text="KAYDET"
+            android:layout_marginLeft="160dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+</RelativeLayout>
+
+
+
+
+
+
+package com.example.user.ornek;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText isim, soyad;
+    RadioGroup radioGrupCinsiyet,soru1Grup,soru2Grup,soru3Grup;
+    RadioButton kadın,erkek,soru1cevap1,soru1cevap2,soru2cevap1,soru2cevap2,soru3cevap1,soru3cevap2;
+    CheckBox ch1,ch2,ch3,ch4,ch5;
+    Button gosterbuton;
+    String veri,data="";
+    TextView sonuc;
+    Boolean cinsiyet;
+    Byte count=0;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        isim = findViewById(R.id.etAd);
+        soyad = findViewById(R.id.etSoyad);
+        radioGrupCinsiyet = findViewById(R.id.radioGrupCinsiyet);
+        soru1Grup = findViewById(R.id.soru1Grup);
+        soru2Grup = findViewById(R.id.soru2Grup);
+        soru3Grup = findViewById(R.id.soru3Grup);
+        kadın = findViewById(R.id.rdKadin);
+        erkek = findViewById(R.id.rdErkek);
+        soru1cevap1 = findViewById(R.id.rdsoru1Cevap1);
+        soru1cevap2 = findViewById(R.id.rdsoru1Cevap2);
+        soru2cevap1 = findViewById(R.id.rdsoru2Cevap1);
+        soru2cevap2 = findViewById(R.id.rdsoru2Cevap2);
+        soru3cevap1 = findViewById(R.id.rdsoru3Cevap1);
+        soru3cevap2 = findViewById(R.id.rdsoru3Cevap2);
+        ch1 = findViewById(R.id.chb1);
+        ch2 = findViewById(R.id.chb2);
+        ch3 = findViewById(R.id.chb3);
+        ch4 = findViewById(R.id.chb4);
+        ch5 = findViewById(R.id.chb5);
+        gosterbuton = findViewById(R.id.gosterButon);
+        sonuc = findViewById(R.id.sonuc);
+
+
+        radioGrupCinsiyet.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if(kadın.isChecked())
+                {
+                    cinsiyet=true;
+                }
+                else if (erkek.isChecked())
+                {
+                    cinsiyet=false;
+                }
+
+            }
+        });
+
+        soru1Grup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if(soru1cevap1.isChecked())
+                {
+                    ImageView img = new ImageView(MainActivity.this);
+                    img.setImageResource(R.drawable.dogru);
+                    Toast toastResim = new Toast(getApplicationContext());
+                    toastResim.setView(img);
+                    toastResim.setDuration(Toast.LENGTH_LONG);
+                    toastResim.show();
+                    count++;
+                }
+                else if (soru1cevap2.isChecked())
+                {
+                    ImageView img = new ImageView(MainActivity.this);
+                    img.setImageResource(R.drawable.hata);
+                    Toast toastResim = new Toast(getApplicationContext());
+                    toastResim.setView(img);
+                    toastResim.setDuration(Toast.LENGTH_LONG);
+                    toastResim.show();
+                }
+
+            }
+        });
+
+        soru2Grup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if(soru2cevap1.isChecked())
+                {
+                    ImageView img = new ImageView(MainActivity.this);
+                    img.setImageResource(R.drawable.hata);
+                    Toast toastResim = new Toast(getApplicationContext());
+                    toastResim.setView(img);
+                    toastResim.setDuration(Toast.LENGTH_LONG);
+                    toastResim.show();
+
+
+                }
+                else if (soru2cevap2.isChecked())
+                {
+                    ImageView img = new ImageView(MainActivity.this);
+                    img.setImageResource(R.drawable.dogru);
+                    Toast toastResim = new Toast(getApplicationContext());
+                    toastResim.setView(img);
+                    toastResim.setDuration(Toast.LENGTH_LONG);
+                    toastResim.show();
+                    count++;
+                }
+
+            }
+        });
+
+        soru3Grup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if(soru3cevap1.isChecked())
+                {
+                    ImageView img = new ImageView(MainActivity.this);
+                    img.setImageResource(R.drawable.dogru);
+                    Toast toastResim = new Toast(getApplicationContext());
+                    toastResim.setView(img);
+                    toastResim.setDuration(Toast.LENGTH_LONG);
+                    toastResim.show();
+                    count++;
+                }
+                else if (soru3cevap2.isChecked())
+                {
+                    ImageView img = new ImageView(MainActivity.this);
+                    img.setImageResource(R.drawable.hata);
+                    Toast toastResim = new Toast(getApplicationContext());
+                    toastResim.setView(img);
+                    toastResim.setDuration(Toast.LENGTH_LONG);
+                    toastResim.show();
+                }
+
+            }
+        });
+
+
+        gosterbuton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(ch1.isChecked())
+                {
+                    data += "Java ";
+                }
+                if(ch2.isChecked())
+                {
+                    data += "Kotlin ";
+                }
+                if(ch3.isChecked())
+                {
+                    data += "c# ";
+                }
+                if(ch4.isChecked())
+                {
+                    data += "c++ ";
+                }
+                if(ch5.isChecked())
+                {
+                    data += "C ";
+                }
+
+                if(cinsiyet)
+                {
+                    veri = isim.getText().toString() + " " + soyad.getText().toString() +""+"kadın"+"doğru sayısı:"+count+" Bilinen diller: "+data;
+                }
+                else
+                {
+                    veri = isim.getText().toString() + " " + soyad.getText().toString() +""+"erkek"+"doğru sayısı:"+count+" Bilinen diller: "+data;
+                }
+                //veri = isim.getText().toString() + " " + soyad.getText().toString();
+                sonuc.setText(veri);
+
+            }
+        });
+
+    }
+}
